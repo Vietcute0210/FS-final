@@ -1,0 +1,392 @@
+:root {
+  --primary-color: #1a4d2e;
+  --accent-color: #4caf50;
+  --secondary-color: #81c784;
+  --gradient-primary: linear-gradient(135deg, #1a4d2e 0%, #2e7d46 100%);
+  --gradient-accent: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+  --text-light: #fff;
+  --form-width: 560px;
+  --form-height: 560px;
+  --form-height-register: 720px;
+  --shadow-color: rgba(26, 77, 46, 0.5);
+  --glow-color: rgba(76, 175, 80, 0.5);
+  --error-color: #ff3c57;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  position: relative;
+  width: min(var(--form-width), calc(100% - 40px));
+  max-width: var(--form-width);
+  height: var(--form-height);
+  background: linear-gradient(
+    135deg,
+    rgba(240, 248, 240, 0.95) 0%,
+    rgba(232, 245, 233, 0.95) 100%
+  );
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(26, 77, 46, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 100;
+}
+
+.wrapper.active {
+  height: var(--form-height-register);
+}
+
+.wrapper .form-box {
+  width: 100%;
+  padding: 70px;
+}
+
+.wrapper .form-box.login {
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s ease;
+  transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+  transform: translateX(-490px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.3s ease;
+}
+
+.wrapper .form-box.register {
+  position: absolute;
+  width: 100%;
+  padding: 70px;
+  opacity: 0;
+  transform: translateX(490px);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s ease;
+}
+
+.wrapper.active .form-box.register {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.5s ease 0.1s;
+}
+
+.form-box h2 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid rgba(26, 77, 46, 0.3);
+  margin: 30px 0;
+  transition: border-color 0.3s ease;
+}
+
+.input-box:focus-within {
+  border-color: var(--accent-color);
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 600;
+  pointer-events: none;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.input-box input:focus ~ label,
+.input-box input:not(:placeholder-shown) ~ label {
+  top: -5px;
+  color: var(--accent-color);
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1em;
+  color: #333;
+  font-weight: 500;
+  padding: 0 40px 0 5px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(240, 248, 240, 0.95) inset !important;
+  -webkit-text-fill-color: #333 !important;
+  box-shadow: 0 0 0 30px rgba(240, 248, 240, 0.95) inset !important;
+  caret-color: #333;
+  background: linear-gradient(
+    135deg,
+    rgba(240, 248, 240, 0.95) 0%,
+    rgba(232, 245, 233, 0.95) 100%
+  ) !important;
+}
+
+input:-webkit-autofill ~ label {
+  top: -10px !important;
+  color: var(--accent-color) !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.3em;
+  color: var(--primary-color);
+  line-height: 57px;
+  transition: color 0.3s ease;
+  opacity: 0.6;
+}
+
+.input-box:focus-within .icon {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.85em;
+  margin: -20px 0 15px;
+  text-align: center;
+  min-height: 20px;
+  font-weight: 500;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 0.85em;
+  margin: -20px 0 15px;
+  text-align: center;
+  min-height: 20px;
+  font-weight: 500;
+}
+
+.remember {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #555;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 500;
+  margin: -5px 0 20px;
+}
+
+.remember label input {
+  accent-color: var(--accent-color);
+  margin-right: 5px;
+}
+
+.remember a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.remember a:hover {
+  text-decoration: underline;
+}
+
+.btn-form {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  background: var(--gradient-accent);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.15em;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-top: 15px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-form:hover {
+  background: var(--accent-color);
+  box-shadow: 0 0 15px var(--glow-color);
+  transform: translateY(-2px);
+}
+
+.btn-form:active {
+  transform: translateY(0);
+}
+
+.oauth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #7a7a7a;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 24px 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.oauth-divider::before,
+.oauth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(122, 122, 122, 0.05),
+    rgba(122, 122, 122, 0.4)
+  );
+}
+
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  height: 48px;
+  margin: 18px auto 0;
+  padding: 0 20px;
+  border: none;
+  border-radius: 8px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  /* background: var(--gradient-accent); */
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.25);
+}
+
+.google-login-btn i {
+  font-size: 1.4rem;
+  background: conic-gradient(
+    #4285f4 0deg 90deg,
+    #34a853 90deg 180deg,
+    #fbbc04 180deg 270deg,
+    #ea4335 270deg 360deg
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.google-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 28px rgba(76, 175, 80, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(76, 175, 80, 0.95),
+    rgba(33, 115, 70, 0.9)
+  );
+}
+
+.google-login-btn:active {
+  transform: translateY(0);
+}
+
+.login-register {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: #555;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+}
+
+.login-register p a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 650;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.login-register p a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #66bb6a;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.login-register p a:hover {
+  text-decoration: none;
+  color: #66bb6a;
+}
+
+.login-register p a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.is-invalid {
+  border-color: var(--error-color) !important;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 95%;
+    max-width: var(--form-width);
+  }
+
+  .wrapper .form-box {
+    padding: 30px;
+  }
+
+  .wrapper.active .form-box.login {
+    transform: translateX(-100%);
+  }
+
+  .wrapper .form-box.register {
+    transform: translateX(100%);
+  }
+}

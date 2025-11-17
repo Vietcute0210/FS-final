@@ -1,0 +1,274 @@
+/*
+ * Styles for the update profile page (avatar edit & information form)
+ * Inspired by modern furniture e-commerce sites (IKEA, Shopee)
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Palette based on soft greens and warm oranges */
+  --bg-color: #f4fbf6;
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  --green: #4caf50;
+  --green-dark: #388e3c;
+  --orange: #f6a623;
+  --orange-dark: #dd8500;
+  --text-color: #2a3a29;
+  --muted-color: #6c8472;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Card container */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  width: 100%;
+  max-width: 980px;
+}
+
+.card-body {
+  padding: 2.5rem;
+}
+
+/* Avatar uploader custom component */
+.avatar-uploader-custom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.avatar-uploader-custom .uploader-frame {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px dashed #cfe7d1;
+  background: #f2faf5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* cho nút cam tràn nửa trong nửa ngoài */
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.avatar-uploader-custom .uploader-frame:hover {
+  border-color: var(--green);
+}
+
+.avatar-uploader-custom .avatar-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: none;
+}
+
+/* Edit avatar button: hình tròn cam, 1/2 đè lên avatar, 1/2 ra ngoài */
+.avatar-uploader-custom .edit-avatar-btn {
+  position: absolute;
+  right: 8px; /* tràn nhẹ ra ngoài khung */
+  bottom: 8px; /* tràn nhẹ ra ngoài khung */
+  width: 38.5px;
+  height: 38.5px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  border: 3px solid #ffffff; /* viền trắng ôm mép avatar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+}
+
+.avatar-uploader-custom .edit-avatar-btn:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+/* Ẩn icon text cũ bên trong, dùng icon hình bút làm nền */
+.avatar-uploader-custom .edit-avatar-btn i {
+  display: none;
+}
+
+.avatar-uploader-custom .edit-avatar-btn::before {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: url("/client/img/pen.png") center/contain no-repeat;
+}
+
+/* Hint and error messages */
+.avatar-hint {
+  font-size: 0.9rem;
+  color: var(--muted-color);
+  text-align: center;
+}
+
+.avatar-error {
+  display: none;
+  font-size: 0.9rem;
+  color: #e74c3c;
+  text-align: center;
+}
+
+/* Hide the native file input */
+.avatar-uploader-custom input[type="file"] {
+  display: none;
+}
+
+/* Form styling */
+.form-label {
+  font-weight: 600;
+  color: var(--muted-color);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 12px;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 0.1rem rgba(76, 175, 80, 0.25);
+}
+
+/* Submit button */
+button.btn-primary {
+  background: linear-gradient(90deg, var(--green), var(--green-dark));
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 992px) {
+  .avatar-uploader-custom .uploader-frame {
+    margin-top: 12px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .avatar-uploader-custom .uploader-frame {
+    width: 180px;
+    height: 180px;
+  }
+  .card-body {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .avatar-uploader-custom .uploader-frame {
+    width: 150px;
+    height: 150px;
+  }
+  .card-body {
+    padding: 1.5rem;
+  }
+  button.btn-primary {
+    width: 100%;
+    display: block;
+  }
+}
+
+.avatar-crop-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+.avatar-crop-modal.show {
+  display: flex;
+}
+.avatar-crop-dialog {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 18px 14px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+.avatar-crop-title {
+  margin: 0 0 8px;
+  font-weight: 600;
+  font-size: 18px;
+}
+.avatar-crop-body {
+  max-height: 60vh;
+  overflow: hidden;
+}
+#avatarCropImage {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.avatar-crop-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.avatar-crop-actions button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.avatar-crop-actions .btn-primary {
+  background: linear-gradient(90deg, var(--green), var(--green-dark));
+  color: #fff;
+}

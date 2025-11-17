@@ -1,0 +1,108 @@
+/* Fade, Slide, Zoom animation */
+.fade-in-up,
+.slide-left,
+.slide-right,
+.zoom-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.fade-in-up.visible,
+.slide-left.visible,
+.slide-right.visible,
+.zoom-in.visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* slide-left/right */
+.slide-left {
+  transform: translateX(-50px);
+}
+.slide-right {
+  transform: translateX(50px);
+}
+.zoom-in {
+  transform: scale(0.9);
+}
+
+/* 🪄 Hover viền + glow phối màu */
+.fruite-item {
+  position: relative;
+  border: 2px solid #ffb524;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  background: linear-gradient(to bottom right, #ffffff, #fff);
+}
+
+.fruite-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(255, 181, 36, 0.35),
+    0 0 10px rgba(129, 196, 8, 0.25);
+  border-color: #81c408;
+}
+
+/* Ảnh căn giữa và phóng nhẹ khi hover */
+.fruite-item .fruite-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  background: linear-gradient(180deg, #fff 0%, #fff 100%);
+  overflow: hidden;
+}
+.fruite-item .fruite-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.4s ease;
+}
+.fruite-item:hover .fruite-img img {
+  transform: scale(1.08);
+}
+
+/* Title & Price Highlight */
+.fruite-item h4 a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.fruite-item:hover h4 a {
+  color: #81c408;
+}
+.fruite-item .product-price {
+  color: #ffb524;
+  font-weight: 600;
+}
+
+/* Navbar Scroll Effect */
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  transition: all 0.4s ease;
+}
+
+/* Back-to-top smooth hover */
+.back-to-top {
+  transition: all 0.4s ease;
+}
+.back-to-top:hover {
+  background-color: #81c408 !important;
+  border-color: #81c408 !important;
+  transform: scale(1.1);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .fruite-item .fruite-img {
+    height: 200px;
+  }
+  h4,
+  h5,
+  p {
+    font-size: 14px !important;
+  }
+}

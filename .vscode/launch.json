@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-FurnitureStoreApplication<furniture_store>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.group10.furniture_store.FurnitureStoreApplication",
+      "projectName": "furniture_store",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-FurnitureStoreApplication<furniture-store>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.group10.furniture_store.FurnitureStoreApplication",
+      "projectName": "furniture-store",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

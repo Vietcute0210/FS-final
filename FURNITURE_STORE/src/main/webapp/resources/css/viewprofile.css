@@ -1,0 +1,139 @@
+/*
+ * Styles for the profile view page
+ * Inspired by modern furniture storefronts (IKEA, Shopee)
+ * Uses soft green hues and warm orange accents
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg-color: #f4fbf6;
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  --green: #4caf50;
+  --green-dark: #388e3c;
+  --orange: #f6a623;
+  --orange-dark: #dd8500;
+  --text-color: #2a3a29;
+  --muted-color: #6c8472;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card-body {
+  padding: 2.5rem;
+}
+
+.profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(76, 175, 80, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--green-dark);
+}
+
+.profile-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-details li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.profile-details li span {
+  font-weight: 600;
+  color: var(--muted-color);
+  margin-right: 6px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.button-group .btn {
+  min-width: 150px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-align: center;
+}
+
+.button-group .btn-primary {
+  background: linear-gradient(90deg, var(--green), var(--green-dark));
+  color: #fff;
+}
+
+.button-group .btn-secondary {
+  background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+  color: #fff;
+}
+
+.button-group .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+  .button-group .btn {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  .button-group {
+    justify-content: center;
+  }
+}
