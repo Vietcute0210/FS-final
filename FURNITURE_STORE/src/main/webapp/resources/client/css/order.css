@@ -142,7 +142,7 @@ body {
 
 /* Product Name Links */
 .table a {
-  color: #81c408;
+  /* color: #81c408; */
   font-weight: 500;
   text-decoration: none;
 }

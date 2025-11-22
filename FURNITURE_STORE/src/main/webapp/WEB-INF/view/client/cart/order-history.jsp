@@ -112,7 +112,7 @@
                                                             <p>Tiếp tục mua sắm để chúng tôi có thể ghi dấu những đơn
                                                                 hàng đầu tiên của
                                                                 bạn nhé!</p>
-                                                            <a href="/product"
+                                                            <a href="/products"
                                                                 class="btn btn-primary rounded-pill px-4">Khám phá sản
                                                                 phẩm</a>
                                                         </div>
